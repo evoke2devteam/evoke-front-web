@@ -8,6 +8,7 @@ import evokeAdminSite from "./reducers";
 
 import { Route, Switch, BrowserRouter} from 'react-router-dom';
 import Login from "./pages/Login";
+import Approve from "./pages/Approve";
 
 let store = createStore(evokeAdminSite, applyMiddleware(thunk));
 
@@ -18,6 +19,7 @@ class RootContainerComponent extends Component {
               <BrowserRouter>
                   <Switch>
                       <Route exact path="/login" component={Login} />
+                      <Route exact path="/approve" component={Approve} />
                   </Switch>
               </BrowserRouter>
           </Layout >

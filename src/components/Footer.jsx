@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import {Container} from 'react-bootstrap';
 
 class Footer extends Component {
     render() {
         return (
-            <div>Footer</div>
+            <Container></Container>
         )
     }
 }
