@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Navbar, Nav} from "react-bootstrap";
+import {auth} from "../actions";
 
 class Header extends Component {
 
     constructor(props){
         super(props);
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(){
+        this.props.logout();
     }
 
     render() {
@@ -19,6 +25,9 @@ class Header extends Component {
                         <Nav.Link href="/approve">Approve</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+                <Nav className="">
+                    <Nav.Item onClick={this.logout}>Logout</Nav.Item>
+                </Nav>
             </Navbar>
         );
     }
@@ -29,7 +38,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+        logout: () => {
+            return dispatch(auth.logout());
+        }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
