@@ -30,20 +30,23 @@ export const loadUser = () => {
     }
 };
 
-export const login = (email, google_token, name) => {
+export const login = (email, google_token, name, tokenId) => {
     return (dispatch, getState) => {
-            let headers = {"Content-Type": "application/json"};
-            let body = {
+            let headers = {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${tokenId}`
+            };
+            let body = JSON.stringify({
                 email,
                 id_gg: google_token,
                 firstName: name
-            };
+            });
             return fetch(`${env.API_URL}/login`, { headers, body, method: "POST"}).then((res)=>{
                 res.json().then((res) => {
                     if(res.status === 200){
                         console.log(res);
                         dispatch({type: "LOGIN_SUCCESS", data: res});
-                        return res.data.token;
+                        return res.data;
                     }else if (res.status >= 400 || res.status <= 500) {
                         dispatch({type: "LOGIN_FAILED", data: res.data});
                         return res.data
