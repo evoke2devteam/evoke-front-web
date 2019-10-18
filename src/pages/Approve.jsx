@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {Container, Table, Button} from "react-bootstrap";
+import * as approve from "../actions/approve";
 
 class Approve extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            kevin: false,
+            sandra: false
+        }
+    }
+
+    exchange(addressfrom, addressto, amount){
+        let token = localStorage.getItem('token_evoke');
+        this.props.approve.transfer(addressfrom, addressto, amount, token);
     }
 
     render(){
@@ -30,11 +40,11 @@ class Approve extends Component {
                     <tr>
                         <td>1</td>
                         <td>Kevin</td>
-                        <td>500</td>
-                        <td>500</td>
+                        <td>10</td>
+                        <td>10</td>
                         <td>EVC</td>
                         <td>
-                            <Button variant="info">Exchange</Button>
+                            <Button variant="info" onClick = { ()=> { this.exchange('from', 'to', 10) }} >Exchange</Button>
                         </td>
                         <td>
                             <Button variant="warning">Reject</Button>
@@ -42,38 +52,12 @@ class Approve extends Component {
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Yakkay</td>
-                        <td>400</td>
-                        <td>400</td>
-                        <td>EVC</td>
-                        <td>
-                            <Button variant="info">Exchange</Button>
-                        </td>
-                        <td>
-                            <Button variant="warning">Reject</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Oscar</td>
-                        <td>300</td>
-                        <td>300</td>
-                        <td>EVC</td>
-                        <td>
-                            <Button variant="info">Exchange</Button>
-                        </td>
-                        <td>
-                            <Button variant="warning">Reject</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
                         <td>Sandra</td>
-                        <td>200</td>
-                        <td>200</td>
+                        <td>15</td>
+                        <td>15</td>
                         <td>EVC</td>
                         <td>
-                            <Button variant="info">Exchange</Button>
+                            <Button variant="info" onClick = { ()=> { this.exchange('from', 'to', 15) }}>Exchange</Button>
                         </td>
                         <td>
                             <Button variant="warning">Reject</Button>
@@ -89,11 +73,16 @@ class Approve extends Component {
 
 const mapStateToProps = state => {
     return {
+        approve: state.approve,
+        transfer: state.approve.transfer
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        transfer: (addressfrom, addressto, amount, token) => {
+            return dispatch(approve.transfer(addressfrom, addressto, amount, token));
+        },
     };
 };
 

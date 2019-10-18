@@ -43,11 +43,11 @@ export const login = (email, google_token, name, tokenId) => {
             });
             return fetch(`${env.API_URL}/login`, { headers, body, method: "POST"}).then((res)=>{
                 res.json().then((res) => {
-                    if(res.status === 200){
+                    if(res.status === true){
                         console.log(res);
                         dispatch({type: "LOGIN_SUCCESS", data: res});
                         return res.data;
-                    }else if (res.status >= 400 || res.status <= 500) {
+                    }else {
                         dispatch({type: "LOGIN_FAILED", data: res.data});
                         return res.data
                     }
