@@ -19,11 +19,8 @@ class Approve extends Component {
                     <tr>
                         <th>#</th>
                         <th>Player</th>
-                        <th>Rubies</th>
                         <th>Evocoins</th>
-                        <th>Currency</th>
-                        <th>Exchange</th>
-                        <th>Reject</th>
+                        <th>Approve</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,52 +28,16 @@ class Approve extends Component {
                         <td>1</td>
                         <td>Kevin</td>
                         <td>500</td>
-                        <td>500</td>
-                        <td>EVC</td>
                         <td>
-                            <Button variant="info">Exchange</Button>
-                        </td>
-                        <td>
-                            <Button variant="warning">Reject</Button>
+                            <Button variant="warning">Approve</Button>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Yakkay</td>
                         <td>400</td>
-                        <td>400</td>
-                        <td>EVC</td>
                         <td>
-                            <Button variant="info">Exchange</Button>
-                        </td>
-                        <td>
-                            <Button variant="warning">Reject</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Oscar</td>
-                        <td>300</td>
-                        <td>300</td>
-                        <td>EVC</td>
-                        <td>
-                            <Button variant="info">Exchange</Button>
-                        </td>
-                        <td>
-                            <Button variant="warning">Reject</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Sandra</td>
-                        <td>200</td>
-                        <td>200</td>
-                        <td>EVC</td>
-                        <td>
-                            <Button variant="info">Exchange</Button>
-                        </td>
-                        <td>
-                            <Button variant="warning">Reject</Button>
+                            <Button variant="warning">Approve</Button>
                         </td>
                     </tr>
                     </tbody>

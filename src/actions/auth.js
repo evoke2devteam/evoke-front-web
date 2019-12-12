@@ -34,7 +34,7 @@ export const login = (email, google_token) => {
             let body = JSON.stringify({email, google_token});
 
             if(body) {
-                dispatch({type: "LOGIN_SUCCESS", data: google_token });
+                dispatch({type: "LOGIN_SUCCESS", data: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0IiwiaWF0IjoxNTcyMzg2OTc0LCJzZWNyZXQiOiIxMSszRXYxdjBvM2tLa2VfNCJ9.jkTrhT-KoTjU9iITyPJlxBLovfBDEPVDLgJU5PhF2HY' });
             }
 
             /*return fetch(`${process.env.REACT_APP_API_URL}/auth/login/`, { headers, body, method: "POST"}).then((res)=>{

@@ -21,8 +21,11 @@ class Header extends Component {
                 <Navbar.Brand href="#">Evoke Admin</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className="justify-content-end">
-                    <Nav className="mr-auto">
+                    <Nav className="mr-0">
                         <Nav.Link href="/approve">Approve</Nav.Link>
+                    </Nav>
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/rewards">Rewards Config</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Nav className="">

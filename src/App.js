@@ -10,6 +10,7 @@ import {auth} from "./actions";
 import { Route, Switch, BrowserRouter, Redirect} from 'react-router-dom';
 import Login from "./pages/Login";
 import Approve from "./pages/Approve";
+import RewardsConfig from "./pages/RewardsConfig";
 
 let store = createStore(evokeAdminSite, applyMiddleware(thunk));
 
@@ -43,6 +44,7 @@ class RootContainerComponent extends Component {
                       <Route exact path="/" component={Login}/>
                       <Route exact path="/login" component={Login} />
                       <PrivateRoute exact path="/approve" component={Approve} />
+                      <PrivateRoute exact path="/rewards" component={RewardsConfig} />
                   </Switch>
               </BrowserRouter>
           </Layout >
