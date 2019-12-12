@@ -53,7 +53,7 @@ export const login = (email, google_token, name, tokenId) => {
 
             }).catch((err)=>{
                 dispatch({type: "LOGIN_FAILED", data: ['Error al autenticar usuario!']});
-            });
+            });*/
     }
 };
 
