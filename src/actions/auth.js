@@ -1,3 +1,5 @@
+import env from '../env';
+
 export const loadUser = () => {
     return (dispatch, getState) => {
 
@@ -28,7 +30,7 @@ export const loadUser = () => {
     }
 };
 
-export const login = (email, google_token) => {
+export const login = (email, google_token, name, tokenId) => {
     return (dispatch, getState) => {
             let headers = {"Content-Type": "application/json"};
             let body = JSON.stringify({email, google_token});
@@ -39,10 +41,11 @@ export const login = (email, google_token) => {
 
             /*return fetch(`${process.env.REACT_APP_API_URL}/auth/login/`, { headers, body, method: "POST"}).then((res)=>{
                 res.json().then((res) => {
-                    if(res.status === 200){
-                        dispatch({type: "LOGIN_SUCCESS", data: res.data.token });
-                        return res.data.token;
-                    }else if (res.status >= 400 || res.status <= 500) {
+                    if(res.status === true){
+                        console.log(res);
+                        dispatch({type: "LOGIN_SUCCESS", data: res});
+                        return res.data;
+                    }else {
                         dispatch({type: "LOGIN_FAILED", data: res.data});
                         return res.data
                     }
@@ -50,7 +53,7 @@ export const login = (email, google_token) => {
 
             }).catch((err)=>{
                 dispatch({type: "LOGIN_FAILED", data: ['Error al autenticar usuario!']});
-            });*/
+            });
     }
 };
 

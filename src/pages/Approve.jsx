@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {Container, Table, Button} from "react-bootstrap";
+import * as approve from "../actions/approve";
 
 class Approve extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            kevin: false,
+            sandra: false
+        }
+    }
+
+    exchange(addressfrom, addressto, amount){
+        let token = localStorage.getItem('token_evoke');
+        this.props.approve.transfer(addressfrom, addressto, amount, token);
     }
 
     render(){
@@ -50,11 +60,16 @@ class Approve extends Component {
 
 const mapStateToProps = state => {
     return {
+        approve: state.approve,
+        transfer: state.approve.transfer
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        transfer: (addressfrom, addressto, amount, token) => {
+            return dispatch(approve.transfer(addressfrom, addressto, amount, token));
+        },
     };
 };
 

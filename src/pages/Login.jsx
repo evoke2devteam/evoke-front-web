@@ -17,8 +17,9 @@ class Login extends Component {
     }
 
     responseGoogle = (response) => {
-        if(response.accessToken){
-            this.props.login(response.profileObj.email, response.accessToken);
+        console.log(response)
+        if(response.googleId){
+            this.props.login(response.profileObj.email, response.googleId, response.profileObj.name, response.tokenId);
         }
     };
 
@@ -58,8 +59,8 @@ const mapDispatchToProps = dispatch => {
         loadUser: () => {
             return dispatch(auth.loadUser());
         },
-        login: (email, google_token) => {
-            return dispatch(auth.login(email, google_token));
+        login: (email, google_token, name, tokenId) => {
+            return dispatch(auth.login(email, google_token, name, tokenId));
         }
     };
 };
