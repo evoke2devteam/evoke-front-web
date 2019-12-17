@@ -1,6 +1,6 @@
 import env from '../env';
 
-export const transfer = (activityId, amount, userId, token) => {
+export const transfer = (activityId, amount, userAddress, token) => {
     return (dispatch, getState) => {
 
         let headers = {
@@ -10,15 +10,13 @@ export const transfer = (activityId, amount, userId, token) => {
         let body = JSON.stringify({
             mission_id: activityId,
             score: amount,
-            user: userId
+            user: userAddress
         });
 
         return fetch(`${env.API_URL}/mission/pay-score`, { headers, body, method: "POST" }).then((res) => {
             res.json().then((res) => {
-                console.log(res)
-                console.log('body',body)
                 if(res.status === true){
-                    dispatch({type:"TRANSFER_SUCCESS", data: res.status});
+                    dispatch({type:"TRANSFER_SUCCESS", data: res});
                     return res;
                 }else{
                     dispatch({type:"TRANSFER_ERROR"});
@@ -31,7 +29,7 @@ export const transfer = (activityId, amount, userId, token) => {
     }
 };
 
-export const listTransactions = (idCourse, token) => {
+export const listRewards = (idCourse, token) => {
     return (dispatch, getState) => {
 
         let headers = {
@@ -39,19 +37,20 @@ export const listTransactions = (idCourse, token) => {
             "Authorization": `Bearer ${token}`
         };
         let body = JSON.stringify({
-           id: idCourse
+            mission_id: idCourse
         });
 
-        return fetch(`${env.API_URL}/mission/get-states-user`, { headers, body, method: "POST" }).then((res) => {
+        return fetch(`${env.API_URL}/mission/get-score`, { headers, body, method: "POST" }).then((res) => {
             res.json().then((res) => {
+                console.log(res.data.statuses)
                 if(res.status === true){
-                    dispatch({type:"PENDING_TRANSACTION_LIST", data: res});
+                    dispatch({type:"REWARDS_LIST", data: res.data.statuses});
                     return res;
                 }else{
-                    dispatch({type:"PENDING_TRANSACTION_LIST_ERROR"});
+                    dispatch({type:"REWARDS_LIST_ERROR"});
                 }
             }).catch(()=>{
-                dispatch({type:"PENDING_TRANSACTION_LIST_ERROR"});
+                dispatch({type:"REWARDS_LIST_ERROR"});
             });
         });
 

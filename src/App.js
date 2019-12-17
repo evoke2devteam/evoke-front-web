@@ -29,10 +29,7 @@ class RootContainerComponent extends Component {
                       {props.children}
                   </Component>
               ) : (
-                  <Redirect to={{
-                      pathname: '/login',
-                      state: { from: props.location }
-                  }}/>
+                  ''
               )
           )}/>
       );

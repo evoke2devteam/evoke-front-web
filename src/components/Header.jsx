@@ -25,7 +25,7 @@ class Header extends Component {
                         <Nav.Link href="/approve">Approve</Nav.Link>
                     </Nav>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/rewards">Rewards Config</Nav.Link>
+                        <Nav.Link href="/rewards">Rewards</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Nav className="">
