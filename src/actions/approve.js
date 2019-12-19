@@ -10,13 +10,12 @@ export const transfer = (activityId, amount, userId, token) => {
         let body = JSON.stringify({
             mission_id: activityId,
             score: amount,
-            user: userId
+            user: userId,
+            admin: 5
         });
 
         return fetch(`${env.API_URL}/mission/pay-score`, { headers, body, method: "POST" }).then((res) => {
             res.json().then((res) => {
-                console.log(res)
-                console.log('body',body)
                 if(res.status === true){
                     dispatch({type:"TRANSFER_SUCCESS", data: res.status});
                     return res;
